@@ -1,0 +1,14 @@
+{
+	"name": "sjelfull/restrict",
+	"description": "Restrict access to the CP",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "Superbig",
+			"homepage": "https://superbig.co"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}
