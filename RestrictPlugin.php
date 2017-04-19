@@ -40,7 +40,7 @@ class RestrictPlugin extends BasePlugin
      */
     public function getDescription ()
     {
-        return Craft::t('Restrict access to the CP');
+        return Craft::t('Restrict access to the CP based on a IP whitelist');
     }
 
     /**
@@ -48,7 +48,7 @@ class RestrictPlugin extends BasePlugin
      */
     public function getDocumentationUrl ()
     {
-        return 'https://github.com/sjelfull/restrict/blob/master/README.md';
+        return 'https://superbig.co/plugins/restrict';
     }
 
     /**
@@ -56,7 +56,7 @@ class RestrictPlugin extends BasePlugin
      */
     public function getReleaseFeedUrl ()
     {
-        return 'https://raw.githubusercontent.com/sjelfull/restrict/master/releases.json';
+        return 'https://superbig.co/plugins/restrict/feed';
     }
 
     /**

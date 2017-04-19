@@ -14,27 +14,31 @@ To install Restrict, follow these steps:
 
 Restrict works on Craft 2.4.x and Craft 2.5.x.
 
-## Restrict Overview
-
-Logged in admins will always be allowed to access the CP even if they are not in the IP whitelist.
-
 ## Configuring Restrict
 
 ```php
 <?php
 return [
-    'ipWhitelist' => []
+    'enabled'     => true,
+
+    // Add any IPs you want to be able to access the CP
+    'ipWhitelist' => [ '::1', '127.0.0.1' ],
+
+    // Logged in admins can bypass the whitelist
+    'allowAdmins' => true,
+
+    // By default, the plugin will throw a exception if the IP isn't in the whitelist
+    // If you want to redirect to an url instead, set it here
+    'redirectUrl' => null,
+
+    // Or you want to render a template, set it here
+    'template'    => null
 ];
 ```
 
 ## Using Restrict
 
--Insert text here-
-
-## Restrict Roadmap
-
-Some things to do, and ideas for potential features:
-
-* Release it
+1. Copy the sample config file `restrict.php` into Craft's config folder, by default `craft/config`.
+2. Add the IPs you want to allow access to the CP, and change the other settings as you see fit.
 
 Brought to you by [Superbig](https://superbig.co)

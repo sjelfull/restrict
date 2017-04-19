@@ -26,6 +26,11 @@ class RestrictService extends BaseApplicationComponent
             $whitelist   = craft()->config->get('ipWhitelist', 'restrict');
             $allowAdmins = craft()->config->get('allowAdmins', 'restrict');
 
+            // Check for CloudFlare IP
+            if ( isset($_SERVER["HTTP_CF_CONNECTING_IP"]) ) {
+                $ip = $_SERVER["HTTP_CF_CONNECTING_IP"];
+            }
+
             // Skip for admins if enabled
             if ( $allowAdmins && craft()->userSession->isAdmin() ) {
                 return true;
@@ -40,11 +45,11 @@ class RestrictService extends BaseApplicationComponent
                     $oldPath = craft()->templates->getTemplatesPath();
                     craft()->templates->setTemplatesPath(CRAFT_TEMPLATES_PATH);
                     echo craft()->templates->render($template);
-                    craft()->end();
                     craft()->templates->setTemplatesPath($oldPath);
+                    craft()->end();
                 }
                 else {
-                    throw new \Exception(Craft::t('Your not allowed to access the control panel.'));
+                    throw new \Exception(Craft::t('Access to the control panel is restricted.'));
                 }
             }
         }
